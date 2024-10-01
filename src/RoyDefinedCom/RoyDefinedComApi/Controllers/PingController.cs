@@ -23,12 +23,9 @@ public class PingController : ControllerBase
     [HttpGet]
     public IActionResult Ping()
     {
-        var httpContext = this._httpContextAccessor.HttpContext;
-        if (httpContext != null)
-        {
-            httpContext.Response.Headers.Append("PingReceiveTime", new DateTimeOffset(DateTime.UtcNow).ToUnixTimeMilliseconds().ToString());
-        }
-
-        return base.NoContent();
-    }
+		var httpContext = this._httpContextAccessor.HttpContext;
+		httpContext?.Response.Headers.Append("Access-Control-Expose-Headers", "PingReceiveTime");
+		httpContext?.Response.Headers.Append("PingReceiveTime", new DateTimeOffset(DateTime.UtcNow).ToUnixTimeMilliseconds().ToString());
+		return base.NoContent();
+	}
 }
