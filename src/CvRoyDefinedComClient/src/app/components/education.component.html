@@ -1,0 +1,20 @@
+<div class="flex flex-col items-start text-xl lg:flex-row">
+    <div class="flex flex-none flex-col overflow-hidden lg:h-full lg:w-60">
+        <div class="flex flex-row items-center">
+            <div class="mt-2 h-3 w-3 flex-none rounded-full bg-slate-400 dark:bg-slate-500">&nbsp;</div>
+            <div class="text-default-reverse ml-2 flex-none rounded-full border bg-slate-600 px-5 py-1 pt-1 dark:border-slate-300 dark:bg-slate-100">
+                {{ from() | date: 'yyyy' }} - {{ (to() | date: 'yyyy') ?? 'present' }}
+            </div>
+        </div>
+
+        <div
+            class="ml-1 h-full w-full text-balance border-l-2 border-slate-300 px-5 pb-5 pl-5 pt-1 text-gray-800 dark:border-slate-100 dark:text-gray-300"
+        ></div>
+    </div>
+    <div class="ml-1 border-l-2 border-slate-300 pb-5 pl-5 dark:border-slate-100 lg:border-none">
+        <h3 class="text-2xl">{{ school() }}</h3>
+        <p class="text-tertiary text-balance">
+            <ng-content></ng-content>
+        </p>
+    </div>
+</div>

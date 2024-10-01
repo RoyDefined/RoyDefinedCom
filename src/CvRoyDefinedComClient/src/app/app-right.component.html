@@ -1,0 +1,103 @@
+<div class="flex h-full flex-col">
+    <section class="topic">
+        <h1 class="topic-header">About me</h1>
+        <div class="flex flex-col gap-4">
+            <div class="flex flex-col gap-2 text-balance">
+                <p>
+                    With nearly ten years of experience in software development I have experienced various different ways to develop amazing applications with
+                    the help of many great people during my career. I've had the opportunity to develop amazing websites, desktop applications and even a game
+                    during this time and these made me learn how amazing and fun it can be when you are able to make whatever you want.
+                </p>
+                <p>
+                    With only ten years this only marks the beginning of my career, as I continue to learn and the world around me continues to evolve with more
+                    to experience.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2">
+                <div class="personal-info-grid-item"><span>Name:</span><span>Roy van der Wijk</span></div>
+                <div class="personal-info-grid-item"><span>Birthday:</span><span>07/06/1998</span></div>
+                <div class="personal-info-grid-item"><span>Degree:</span><span>Associate Degree</span></div>
+                <div class="personal-info-grid-item"><span>Programming since:</span><span>Late 2013</span></div>
+                <div class="personal-info-grid-item"><span>Working experience:</span><span>4 years</span></div>
+                <div class="personal-info-grid-item"><span>Location:</span><span>Naarden, The Netherlands</span></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="topic">
+        <h1 class="topic-header">Skills (languages)</h1>
+
+        <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-10">
+            @for (skill of skillsLanguages; track $index) {
+                <comp-skillbar [skill]="skill.skill" [width]="skill.width"></comp-skillbar>
+            }
+        </div>
+    </section>
+
+    <section class="topic">
+        <h1 class="topic-header">Skills (Frameworks)</h1>
+
+        <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-10">
+            @for (skill of skillsFrameworks; track $index) {
+                <comp-skillbar [skill]="skill.skill" [width]="skill.width"></comp-skillbar>
+            }
+        </div>
+    </section>
+
+    <section class="topic">
+        <h1 class="topic-header">Other notable skills</h1>
+        <div class="flex flex-wrap gap-2">
+            @for (skill of skillsOther; track $index) {
+                <comp-skill-other [skill]="skill.skill"></comp-skill-other>
+            }
+        </div>
+    </section>
+
+    <section class="topic flex flex-col">
+        <h1 class="topic-header">Experience</h1>
+        <div class="flex flex-col py-5">
+            @for (experience of jobExperiences; track $index) {
+                <comp-experience class="flex flex-col" [job]="experience.job" [company]="experience.company" [from]="experience.from" [to]="experience.to">
+                    {{ experience.description }}
+                </comp-experience>
+            }
+        </div>
+    </section>
+
+    <section class="topic flex flex-col">
+        <h1 class="topic-header">Education</h1>
+        <div class="flex flex-col py-5">
+            @for (experience of education; track $index) {
+                <comp-education class="flex flex-col" [school]="experience.school" [from]="experience.from" [to]="experience.to">
+                    {{ experience.description }}
+                </comp-education>
+            }
+        </div>
+    </section>
+
+    <section class="topic">
+        <h1 class="topic-header">Portfolio</h1>
+        <span class="text-muted flex flex-wrap gap-1">
+            <span>Most relevant items shown.</span>
+            <span>Click individual items for more information.</span>
+        </span>
+        <div class="xs:w-96 mt-5 grid grid-cols-1 gap-6 pl-8 md:w-full md:grid-cols-2 md:pl-0">
+            @for (portfolioItem of portfolioItems; track $index) {
+                <div
+                    (click)="openPortfolioItem(portfolioItem)"
+                    class="bg-portfolio-container xs:w-[21rem] flex max-w-[21rem] cursor-pointer flex-col gap-5 rounded-lg p-3 transition-transform hover:scale-125"
+                >
+                    <div class="relative h-[5rem] w-full">
+                        <img [ngSrc]="portfolioItem.imageSources[0]" class="object-contain" fill />
+                    </div>
+
+                    <div class="text-center">
+                        <h1 class="text-lg font-bold">{{ portfolioItem.title }}</h1>
+                        <h2 class="text-md">{{ portfolioItem.subtitle }}</h2>
+                    </div>
+                </div>
+            }
+        </div>
+    </section>
+</div>

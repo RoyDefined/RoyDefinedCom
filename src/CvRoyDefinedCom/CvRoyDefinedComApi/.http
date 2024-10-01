@@ -1,0 +1,9 @@
+@hostname=localhost
+@protocol=http
+@port=5000
+@host={{protocol}}://{{hostname}}:{{port}}
+@apiEndpoint={{host}}/api
+
+# Basic ping endpoint
+GET {{apiEndpoint}}/ping
+###

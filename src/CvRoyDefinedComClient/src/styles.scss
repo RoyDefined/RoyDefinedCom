@@ -1,0 +1,91 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* * {
+    @apply transition-colors;
+} */
+
+.text-default {
+    @apply text-slate-800 dark:text-gray-100;
+}
+
+.text-default-reverse {
+    @apply text-gray-100 dark:text-slate-800;
+}
+
+.text-primary {
+    @apply text-lime-800 dark:text-green-600;
+}
+
+.text-secondary {
+    @apply text-yellow-700 dark:text-yellow-600;
+}
+
+.text-tertiary {
+    @apply text-slate-600 dark:text-gray-400;
+}
+
+.text-muted {
+    @apply text-slate-600 opacity-80 dark:text-slate-400;
+}
+
+.bg-container {
+    @apply bg-white dark:bg-gray-800;
+}
+
+.bg-modal {
+    @apply bg-gray-800 bg-opacity-30 dark:bg-gray-600 dark:bg-opacity-30;
+}
+
+.bg-header,
+.bg-footer {
+    @apply bg-slate-200 dark:bg-slate-600;
+}
+
+.bg-main {
+    @apply bg-slate-100 dark:bg-gray-700;
+}
+
+.bg-skill-other {
+    @apply bg-slate-100 dark:bg-gray-700;
+}
+
+.bg-portfolio-container {
+    @apply bg-slate-100 dark:bg-gray-700;
+}
+
+.social-button {
+    @apply rounded-sm bg-slate-300 fill-slate-800 font-bold duration-200 hover:bg-slate-400 dark:bg-slate-600 dark:fill-slate-200 hover:dark:bg-slate-500;
+}
+
+.flat-button {
+    @apply p-2 text-center font-medium uppercase outline outline-1 outline-slate-400 duration-100 hover:bg-slate-300 dark:outline-slate-600 hover:dark:bg-slate-600;
+}
+
+.dark-mode-button {
+    @apply h-10 rounded-md bg-slate-300 px-2 py-1 text-slate-800 duration-200 hover:bg-slate-400 dark:bg-slate-600 dark:text-slate-200 hover:dark:bg-slate-500;
+}
+
+.back-to-top-button {
+    @apply h-14 rounded-full fill-slate-800 duration-200 hover:fill-slate-500 dark:fill-slate-200 dark:hover:fill-slate-400;
+}
+
+.topic {
+    @apply animate-fadeInUp p-4 sm:p-12;
+}
+
+.topic-header {
+    @apply text-secondary mb-2 text-3xl font-bold;
+}
+
+.personal-info-grid-item {
+    @apply flex space-x-2;
+
+    span:first-child {
+        @apply text-tertiary font-bold;
+    }
+
+    /* span:nth-child(2) {
+    } */
+}

@@ -1,0 +1,21 @@
+<main class="bg-container text-default flex h-full flex-col justify-center lg:flex-row">
+    <app-left class="w-full lg:sticky lg:top-0 lg:h-dvh lg:w-[13rem] xl:w-[20rem]"> </app-left>
+    <app-right class="lg:w-[50rem]"></app-right>
+</main>
+
+<div class="fixed bottom-0 right-0 flex items-center gap-4 p-5">
+    <button (click)="nextDarkModeType()" type="button" class="dark-mode-button">
+        @if (darkModeType(); as darkModeType) {
+            @if (darkModeType === 'Dark') {
+                <svg-dark-mode-moon></svg-dark-mode-moon>
+            } @else if (darkModeType === 'Light') {
+                <svg-dark-mode-sun></svg-dark-mode-sun>
+            } @else {
+                <svg-dark-mode-system></svg-dark-mode-system>
+            }
+        }
+    </button>
+    <button (click)="scrollToTop()" type="button" class="back-to-top-button animate-bounce">
+        <svg-navigation-back-to-top></svg-navigation-back-to-top>
+    </button>
+</div>

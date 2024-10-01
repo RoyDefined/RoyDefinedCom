@@ -1,0 +1,30 @@
+<div class="bg-main flex flex-row justify-evenly gap-2 bg-blue-300 p-2 lg:h-full lg:flex-col lg:p-0">
+    <div class="relative h-[11rem] w-[15rem] lg:mb-4 lg:h-[15rem] lg:w-full xl:h-[25rem]">
+        <img ngSrc="profile-picture.jpg" class="object-cover object-top" fill priority />
+    </div>
+    <div class="flex h-full w-96 flex-col self-center lg:w-full">
+        <div class="grow">
+            <div class="flex grow flex-col items-center">
+                <h1 class="text-primary mb-2 text-2xl font-bold xl:text-3xl">Roy van der Wijk</h1>
+                <div class="flex text-xl sm:text-2xl lg:text-xl xl:text-2xl">
+                    <p>{{ typeWriterText() }}</p>
+                    <span class="animate-pulse font-extrabold"> | </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="my-3 flex justify-center space-x-2">
+            <a href="https://github.com/RoyDefined" type="button" class="social-button flex h-12 w-12 items-center justify-center">
+                <svg-social-github></svg-social-github>
+            </a>
+            <a href="https://linkedin.com/in/royvdwijk" type="button" class="social-button flex h-12 w-12 items-center justify-center">
+                <svg-social-linkedin></svg-social-linkedin>
+            </a>
+        </div>
+
+        <div class="flex justify-center text-xs">
+            <!-- <a href="#" type="button" class="flat-button w-[50%]">Download CV</a> -->
+            <a href="https://www.roydefined.com/" type="button" class="flat-button w-[50%]">My site</a>
+        </div>
+    </div>
+</div>
