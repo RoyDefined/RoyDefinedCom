@@ -11,7 +11,7 @@ import { DarkModeType } from './darkModeType';
 })
 export class DarkModeService {
     private _darkModeType: DarkModeType = 'System';
-    private _clientPreferDarkMode = false;
+    private _preferColorSchemeDark = false;
 
     /**
      * Returns the client's darkmode type.
@@ -49,10 +49,10 @@ export class DarkModeService {
 
     private initializeDarkModeListener() {
         const preferColorSchemeDarkMedia = window.matchMedia('(prefers-color-scheme: dark)');
-        this._clientPreferDarkMode = preferColorSchemeDarkMedia.matches;
+        this._preferColorSchemeDark = preferColorSchemeDarkMedia.matches;
 
         preferColorSchemeDarkMedia.addEventListener('change', (event) => {
-            this._clientPreferDarkMode = event.matches;
+            this._preferColorSchemeDark = event.matches;
             this.updateDarkMode();
         });
     }
@@ -60,7 +60,7 @@ export class DarkModeService {
     // Updates dark mode when system options change preferation or something updated the current darkmode value.
     private updateDarkMode() {
         const darkModeClassAdded = document.documentElement.classList.contains('dark');
-        const darkModeEnabled = this.darkModeType === 'Dark' || (this.darkModeType === 'System' && this._clientPreferDarkMode);
+        const darkModeEnabled = this.darkModeType === 'Dark' || (this.darkModeType === 'System' && this._preferColorSchemeDark);
 
         if (darkModeClassAdded && !darkModeEnabled) {
             document.documentElement.classList.remove('dark');
