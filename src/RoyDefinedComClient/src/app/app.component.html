@@ -1,13 +1,39 @@
-<div class="bg-container-primary text-default flex h-full min-h-screen flex-col pb-20 pt-10">
-    <section class="grow p-8">
+<div class="bg-container-primary text-default relative flex h-full min-h-screen flex-col pb-20 pt-5">
+    <section class="grow">
         <div class="relative h-40">
             <img ngSrc="logo.png" class="object-contain" fill priority />
         </div>
 
-        <div class="pt-8 text-center text-lg">Many great things will appear here soon...</div>
+        <div class="my-5"></div>
+
+        <div
+            class="bg-container-special mx-5 flex flex-col rounded-lg border-2 border-red-200/80 bg-gradient-to-br from-red-500/15 via-white to-gray-100 p-5 shadow-lg dark:border-red-700/80 dark:from-red-900 dark:via-black dark:to-gray-800"
+        >
+            <div class="relative h-[30rem]">
+                <img ngSrc="zh2-teaser.gif" class="object-contain" fill priority />
+            </div>
+
+            <div class="mt-5 flex flex-col items-center gap-4">
+                <p class="text-secondary text-3xl font-bold">Trailer &rarr; 13/10/24</p>
+                <p class="text-tertiary text-md flex flex-wrap items-center justify-center gap-2">
+                    <span>More info / want to contribute?</span>
+                    <a class="button" href="https://discord.gg/ne6WcTCHpj">Join the Discord</a>
+                </p>
+            </div>
+        </div>
+
+        <!-- <div class="pointer-events-none fixed top-0 h-screen w-screen animate-pulse bg-gradient-to-r from-red-700 via-transparent to-red-700 opacity-25"></div> -->
+        <div
+            class="pointer-events-none absolute left-0 top-0 h-full w-36 animate-pulse bg-contain bg-repeat-y opacity-15 sm:w-48 md:w-72"
+            style="background-image: url(pulsing-red-left.png)"
+        ></div>
+        <div
+            class="pointer-events-none absolute right-0 top-0 h-full w-36 animate-pulse bg-contain bg-repeat-y opacity-15 sm:w-48 md:w-72"
+            style="background-image: url(pulsing-red-right.png)"
+        ></div>
     </section>
 </div>
 
-<div class="bg-container-primary text-default fixed bottom-0 w-full">
+<div class="text-default fixed bottom-0 w-full">
     <app-footer></app-footer>
 </div>

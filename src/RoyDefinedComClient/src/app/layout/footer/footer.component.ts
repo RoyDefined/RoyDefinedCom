@@ -26,6 +26,9 @@ import { SocialDiscordComponent } from '../../components/svg/social-discord.comp
 export class FooterComponent {
     private readonly _darkModeService = inject(DarkModeService);
 
+    // Disabled for the ZH2 teaser.
+    public readonly darkModeButtonEnabled = false;
+
     public get darkModeType() {
         return this._darkModeService.darkModeType;
     }
