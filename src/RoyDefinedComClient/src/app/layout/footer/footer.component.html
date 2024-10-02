@@ -18,6 +18,20 @@
                     Discord
                 </a>
             </li>
+
+            <li>
+                <button (click)="nextDarkModeType()" class="button">
+                    @if (darkModeType(); as darkModeType) {
+                        @if (darkModeType === 'Dark') {
+                            <svg-dark-mode-moon></svg-dark-mode-moon>
+                        } @else if (darkModeType === 'Light') {
+                            <svg-dark-mode-sun></svg-dark-mode-sun>
+                        } @else {
+                            <svg-dark-mode-system></svg-dark-mode-system>
+                        }
+                    }
+                </button>
+            </li>
         </ul>
     </div>
 </footer>
