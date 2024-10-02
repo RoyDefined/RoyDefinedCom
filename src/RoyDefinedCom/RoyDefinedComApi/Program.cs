@@ -2,24 +2,13 @@ using Microsoft.EntityFrameworkCore;
 using RoyDefinedComApi.Data;
 using Serilog;
 
-#if DEBUG
-using Serilog.Debugging;
-#endif
-
 var builder = WebApplication.CreateBuilder(args);
-
-#if DEBUG
-// This allows Serilog to log any errors during initialization.
-SelfLog.Enable(Console.Error.WriteLine);
-#endif
 
 var logger = new LoggerConfiguration()
     .ReadFrom.Configuration(builder.Configuration)
     .CreateLogger();
 
-// Static logger for developmental purposes or where DI is not accessible. Use the injected ILogger for anything else.
 Log.Logger = logger;
-
 logger.Debug("Configuring service collection...");
 
 try
@@ -28,7 +17,9 @@ try
     _ = builder.Logging.ClearProviders();
     _ = builder.Services.AddLogging(builder => builder.AddSerilog(logger));
 
+	// TODO: I don't think this is required.
     builder.Services.AddRouting();
+
     builder.Services.AddControllers();
     builder.Services.AddHttpContextAccessor();
 
@@ -45,6 +36,7 @@ catch (Exception ex)
     logger.Error(ex, "Error during initial builder setup.");
     return;
 }
+
 var app = builder.Build();
 logger.Debug("Starting application...");
 
@@ -77,13 +69,15 @@ try
 
     await databaseContext.SaveChangesAsync(CancellationToken.None);
 
-    app.UseRouting();
+	// TODO: I don't think this is required.
+	app.UseRouting();
 
 #if RELEASE
     app.UseDefaultFiles();
     app.UseStaticFiles();
 #endif
 
+	// TODO: Can be simplified.
     _ = app.UseEndpoints(endpoints =>
     {
         _ = endpoints.MapControllers();
