@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
 import { ClientSettingsService } from '../client-settings/client-settings.service';
 import { DarkModeType } from './darkModeType';
 
@@ -10,7 +10,7 @@ import { DarkModeType } from './darkModeType';
     providedIn: 'root',
 })
 export class DarkModeService {
-    private _darkModeType: DarkModeType = 'System';
+    private readonly _darkModeType = signal<DarkModeType>('System');
     private _preferColorSchemeDark = false;
 
     /**
@@ -20,30 +20,30 @@ export class DarkModeService {
         return this._darkModeType;
     }
 
-    /**
-     * Sets the client's darkmode type and updates settings.
-     */
-    public set darkModeType(value: DarkModeType) {
-        this._darkModeType = value;
-        this._clientSettingsService.settings = {
-            ...this._clientSettingsService.settings,
-            darkModeType: value,
-        };
-        this.updateDarkMode();
-    }
-
     constructor(private readonly _clientSettingsService: ClientSettingsService) {}
 
     /**
      * Initializes the service.
      */
     public initialize() {
-        const darkModeType = this._clientSettingsService.settings?.darkModeType;
+        const darkModeType = this._clientSettingsService.settings().darkModeType;
         if (darkModeType) {
-            this._darkModeType = darkModeType;
+            this._darkModeType.set(darkModeType);
         }
 
         this.initializeDarkModeListener();
+        this.updateDarkMode();
+    }
+
+    /**
+     * Sets the client's darkmode type and updates settings.
+     */
+    public setDarkModeType(value: DarkModeType) {
+        this._darkModeType.set(value);
+        this._clientSettingsService.settings = {
+            ...this._clientSettingsService.settings,
+            darkModeType: value,
+        };
         this.updateDarkMode();
     }
 
@@ -60,7 +60,9 @@ export class DarkModeService {
     // Updates dark mode when system options change preferation or something updated the current darkmode value.
     private updateDarkMode() {
         const darkModeClassAdded = document.documentElement.classList.contains('dark');
-        const darkModeEnabled = this.darkModeType === 'Dark' || (this.darkModeType === 'System' && this._preferColorSchemeDark);
+
+        const currentDarkModeType = this._darkModeType();
+        const darkModeEnabled = currentDarkModeType === 'Dark' || (currentDarkModeType === 'System' && this._preferColorSchemeDark);
 
         if (darkModeClassAdded && !darkModeEnabled) {
             document.documentElement.classList.remove('dark');

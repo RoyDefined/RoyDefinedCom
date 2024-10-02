@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { DarkModeService } from '../../services/dark-mode/darkMode.service';
 
@@ -10,17 +10,15 @@ import { DarkModeService } from '../../services/dark-mode/darkMode.service';
     imports: [CommonModule, RouterModule],
 })
 export class HeaderComponent {
+    private readonly _darkModeService = inject(DarkModeService);
+
     public get darkModeType() {
         return this._darkModeService.darkModeType;
     }
 
-    constructor(private readonly _darkModeService: DarkModeService) {}
-
-    /**
-     * Toggles dark mode to the next option.
-     */
-    public toggleDarkMode() {
-        const current = this._darkModeService.darkModeType;
-        this._darkModeService.darkModeType = current === 'System' ? 'Light' : this._darkModeService.darkModeType === 'Light' ? 'Dark' : 'System';
+    public nextDarkModeType() {
+        const currentDarkModeType = this.darkModeType();
+        const nextType = currentDarkModeType === 'System' ? 'Light' : currentDarkModeType === 'Light' ? 'Dark' : 'System';
+        this._darkModeService.setDarkModeType(nextType);
     }
 }

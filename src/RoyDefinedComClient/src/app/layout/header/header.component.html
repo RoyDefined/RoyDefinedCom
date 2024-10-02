@@ -35,16 +35,16 @@
     <div class="flex gap-1">
         <div class="w-full">
             <div class="relative inline-flex w-full align-middle">
-                <button (click)="toggleDarkMode()" class="button">
-                    <ng-container *ngIf="darkModeType === 'System'">
-                        <ng-container *ngTemplateOutlet="desktopIcon"></ng-container>
-                    </ng-container>
-                    <ng-container *ngIf="darkModeType === 'Light'">
-                        <ng-container *ngTemplateOutlet="sunIcon"></ng-container>
-                    </ng-container>
-                    <ng-container *ngIf="darkModeType === 'Dark'">
-                        <ng-container *ngTemplateOutlet="moonIcon"></ng-container>
-                    </ng-container>
+                <button (click)="nextDarkModeType()" class="button">
+                    @if (darkModeType(); as darkModeType) {
+                        @if (darkModeType === 'Dark') {
+                            <ng-container *ngTemplateOutlet="moonIcon"></ng-container>
+                        } @else if (darkModeType === 'Light') {
+                            <ng-container *ngTemplateOutlet="sunIcon"></ng-container>
+                        } @else {
+                            <ng-container *ngTemplateOutlet="desktopIcon"></ng-container>
+                        }
+                    }
                 </button>
             </div>
         </div>
