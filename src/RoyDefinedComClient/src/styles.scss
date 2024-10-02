@@ -2,9 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-* {
+/* * {
     @apply transition-colors;
-}
+} */
 
 .button {
     @apply rounded-lg bg-white p-1 shadow shadow-slate-300 transition-all hover:bg-slate-200 active:scale-90 dark:bg-gray-800 dark:shadow-slate-800 hover:dark:bg-gray-600;
