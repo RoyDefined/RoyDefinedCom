@@ -2,7 +2,7 @@
 @protocol=http
 @port=5000
 @host={{protocol}}://{{hostname}}:{{port}}
-@apiEndpoint={{protocol}}://{{hostname}}:{{port}}/api
+@apiEndpoint={{host}}/api
 
 # Ping endpoint.
 GET {{apiEndpoint}}/ping

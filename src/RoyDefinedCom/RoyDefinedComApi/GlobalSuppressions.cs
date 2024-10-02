@@ -11,9 +11,3 @@ using System.Diagnostics.CodeAnalysis;
 [assembly: SuppressMessage("Performance", "CA1812:Avoid uninstantiated internal classes")]
 [assembly: SuppressMessage("Performance", "CA1819:Properties should not return arrays")]
 [assembly: SuppressMessage("Design", "CA1002:Do not expose generic lists")]
-
-// These are all suppressions related to generated migrations, and therefore are not manually written.
-[assembly: SuppressMessage("Style", "IDE0161:Convert to file-scoped namespace", Justification = "Generated code.", Scope = "namespaceanddescendants", Target = "WebDoomerApi.Data.Migrations")]
-[assembly: SuppressMessage("Design", "CA1062:Validate arguments of public methods", Justification = "Generated code.", Scope = "namespaceanddescendants", Target = "WebDoomerApi.Data.Migrations)")]
-[assembly: SuppressMessage("Style", "IDE0058:Expression value is never used", Justification = "Generated code.", Scope = "namespaceanddescendants", Target = "WebDoomerApi.Data.Migrations)")]
-[assembly: SuppressMessage("Style", "IDE0053:Use expression body for lambda expression", Justification = "Generated code.", Scope = "namespaceanddescendants", Target = "WebDoomerApi.Data.Migrations)")]
