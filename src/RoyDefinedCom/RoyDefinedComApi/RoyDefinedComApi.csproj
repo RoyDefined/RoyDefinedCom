@@ -14,11 +14,4 @@
 	<PackageReference Include="Serilog.Sinks.Console" Version="5.0.1" />
   </ItemGroup>
 
-  <ItemGroup Condition="'$(Configuration)' == 'Debug'">
-	<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.2">
-		<PrivateAssets>all</PrivateAssets>
-		<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-	</PackageReference>
-  </ItemGroup>
-
 </Project>
