@@ -1,5 +1,7 @@
 <nav class="flex h-14 bg-gray-100 p-3 pl-3 text-gray-700 shadow dark:bg-gray-700 dark:text-gray-400">
-    <a class="h-full w-16 cursor-pointer bg-[url('assets/logosmall.png')] bg-contain bg-center bg-no-repeat" [routerLink]="['/']"> </a>
+    <div class="relative h-full w-16">
+        <img ngSrc="logosmall.png" class="object-contain" fill priority />
+    </div>
 
     <div class="flex flex-grow items-center">
         <!-- Optional content -->

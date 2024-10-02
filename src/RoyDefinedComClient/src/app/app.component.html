@@ -2,7 +2,9 @@
     <app-header></app-header>
 
     <section class="grow p-8">
-        <div class="h-40 bg-[url('assets/logo.png')] bg-contain bg-center bg-no-repeat"></div>
+        <div class="relative h-40">
+            <img ngSrc="logo.png" class="object-contain" fill priority />
+        </div>
 
         <div class="pt-8 text-center text-lg text-gray-800 dark:text-gray-200">Many great things will appear here soon...</div>
     </section>

@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { DarkModeService } from '../../services/dark-mode/darkMode.service';
@@ -10,7 +10,7 @@ import { DarkModeSystemComponent } from '../../components/svg/dark-mode-system.c
     standalone: true,
     selector: 'app-header',
     templateUrl: './header.component.html',
-    imports: [CommonModule, RouterModule, DarkModeSystemComponent, DarkModeSunComponent, DarkModeMoonComponent],
+    imports: [CommonModule, RouterModule, DarkModeSystemComponent, DarkModeSunComponent, DarkModeMoonComponent, NgOptimizedImage],
 })
 export class HeaderComponent {
     private readonly _darkModeService = inject(DarkModeService);
