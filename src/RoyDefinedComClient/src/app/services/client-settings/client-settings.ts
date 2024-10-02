@@ -9,3 +9,5 @@ export const clientSettingsSchema = z
         darkModeType: darkModeTypeSchema.optional().nullable(),
     })
     .strict();
+
+export type ClientSettings = z.infer<typeof clientSettingsSchema>;

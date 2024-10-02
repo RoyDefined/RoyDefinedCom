@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { z } from 'zod';
-import { clientSettingsSchema } from './client-settings';
+import { ClientSettings, clientSettingsSchema } from './client-settings';
 
 /**
  * A service to handle client settings.
@@ -12,12 +11,12 @@ import { clientSettingsSchema } from './client-settings';
 export class ClientSettingsService {
     private readonly _localStorageKey = 'RoyDefined.Settings';
 
-    private _settings?: z.infer<typeof clientSettingsSchema>;
+    private _settings?: ClientSettings;
 
     /**
      * Returns the client settings.
      */
-    public get settings(): z.infer<typeof clientSettingsSchema> {
+    public get settings(): ClientSettings {
         // Function will return an empty object should fetch/parsing fail.
         // The client will have to redo the settings.
 
@@ -43,7 +42,7 @@ export class ClientSettingsService {
     /**
      * Stores the given settings.
      */
-    public set settings(value: z.infer<typeof clientSettingsSchema>) {
+    public set settings(value: ClientSettings) {
         this._settings = value;
         localStorage.setItem(this._localStorageKey, JSON.stringify(value));
     }

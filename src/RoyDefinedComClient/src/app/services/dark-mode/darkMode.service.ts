@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ClientSettingsService } from '../client-settings/client-settings.service';
-import { z } from 'zod';
-import { darkModeTypeSchema } from './darkModeType';
+import { DarkModeType } from './darkModeType';
 
 /**
  * A server to handle setting dark mode on the app.
@@ -11,7 +10,7 @@ import { darkModeTypeSchema } from './darkModeType';
     providedIn: 'root',
 })
 export class DarkModeService {
-    private _darkModeType?: z.infer<typeof darkModeTypeSchema>;
+    private _darkModeType?: DarkModeType;
     private _clientPreferDarkMode?: boolean;
 
     /**
@@ -29,7 +28,7 @@ export class DarkModeService {
     /**
      * Sets the client's darkmode type and updates settings.
      */
-    public set darkModeType(value: z.infer<typeof darkModeTypeSchema>) {
+    public set darkModeType(value: DarkModeType) {
         this._darkModeType = value;
         this._clientSettingsService.settings = {
             ...this._clientSettingsService.settings,
