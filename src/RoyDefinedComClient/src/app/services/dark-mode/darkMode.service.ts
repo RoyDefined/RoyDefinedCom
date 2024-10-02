@@ -13,6 +13,10 @@ export class DarkModeService {
     private readonly _darkModeType = signal<DarkModeType>('System');
     private _preferColorSchemeDark = false;
 
+    // Forces a specific dark mode type by default.
+    // The dark mode button should probably be disabled if a specific type is set.
+    private _forceDarkModeType: DarkModeType | null = 'Dark';
+
     /**
      * Returns the client's darkmode type.
      */
@@ -26,9 +30,15 @@ export class DarkModeService {
      * Initializes the service.
      */
     public initialize() {
-        const darkModeType = this._clientSettingsService.settings().darkModeType;
-        if (darkModeType) {
-            this._darkModeType.set(darkModeType);
+        // Specific for the ZH2 teaser, the site is dark by default.
+
+        if (!this._forceDarkModeType) {
+            const darkModeType = this._clientSettingsService.settings().darkModeType;
+            if (darkModeType) {
+                this._darkModeType.set(darkModeType);
+            }
+        } else {
+            this._darkModeType.set(this._forceDarkModeType);
         }
 
         this.initializeDarkModeListener();
