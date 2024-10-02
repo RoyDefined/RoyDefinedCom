@@ -25,8 +25,14 @@
 </div>
 
 <!-- <div class="pointer-events-none fixed top-0 h-screen w-screen animate-pulse bg-gradient-to-r from-red-700 via-transparent to-red-700 opacity-25"></div> -->
-<div class="pointer-events-none fixed left-0 top-0 h-screen w-72 animate-pulse bg-repeat-y" style="background-image: url(pulsing-red-left.png)"></div>
-<div class="pointer-events-none fixed right-0 top-0 h-screen w-72 animate-pulse bg-repeat-y" style="background-image: url(pulsing-red-right.png)"></div>
+<div
+    class="pointer-events-none absolute left-0 top-0 h-full w-36 animate-pulse bg-contain bg-repeat-y opacity-15 sm:w-48 md:w-72"
+    style="background-image: url(pulsing-red-left.png)"
+></div>
+<div
+    class="pointer-events-none absolute right-0 top-0 h-full w-36 animate-pulse bg-contain bg-repeat-y opacity-15 sm:w-48 md:w-72"
+    style="background-image: url(pulsing-red-right.png)"
+></div>
 
 <div class="text-default fixed bottom-0 w-full">
     <app-footer></app-footer>
