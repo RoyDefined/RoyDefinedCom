@@ -1,5 +1,3 @@
-using Microsoft.EntityFrameworkCore;
-using RoyDefinedComApi.Data;
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -22,14 +20,6 @@ try
 
     builder.Services.AddControllers();
     builder.Services.AddHttpContextAccessor();
-
-    // Database
-    var configuration = builder.Configuration
-        .GetRequiredSection("Database")
-        .Get<DatabaseConfiguration>();
-    ArgumentNullException.ThrowIfNull(configuration, nameof(configuration));
-    builder.Services.AddSingleton(configuration);
-    builder.Services.AddDbContext<DatabaseContext>();
 }
 catch (Exception ex)
 {
@@ -42,33 +32,6 @@ logger.Debug("Starting application...");
 
 try
 {
-    using var scope = app.Services.GetRequiredService<IServiceScopeFactory>().CreateScope();
-    var databaseContext = scope.ServiceProvider.GetRequiredService<DatabaseContext>();
-
-    // Attempt migration to ensure the database exists and it up to date.
-    await databaseContext.Database.MigrateAsync(CancellationToken.None)
-        .ConfigureAwait(false);
-
-    // Increment startup count.
-    // Make sure the stat exists.
-    var startupCount = await databaseContext.Stats.SingleOrDefaultAsync(x => x.Key == "STARTUPS", CancellationToken.None);
-    if (startupCount == null)
-    {
-        startupCount = new()
-        {
-            Key = "STARTUPS",
-            Value = 1,
-        };
-
-        databaseContext.Stats.Add(startupCount);
-    }
-    else
-    {
-        startupCount.Value++;
-    }
-
-    await databaseContext.SaveChangesAsync(CancellationToken.None);
-
 	// TODO: I don't think this is required.
 	app.UseRouting();
 
