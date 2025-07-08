@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { AfterViewInit, Component, inject, OnInit } from '@angular/core';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { SkillbarComponent } from './components/skillbar.component';
@@ -12,6 +12,7 @@ import { EducationComponent } from './components/education.component';
 import { Education } from './types/Education';
 import { SkillOther } from './types/Skill-other';
 import { SkillOtherComponent } from './components/skill-other.component';
+import { AlertModalComponent } from './modals/alert.modal.component';
 
 @Component({
     standalone: true,
@@ -20,7 +21,7 @@ import { SkillOtherComponent } from './components/skill-other.component';
     imports: [CommonModule, RouterModule, SkillbarComponent, SkillOtherComponent, ExperienceComponent, EducationComponent, NgOptimizedImage],
     providers: [ModalService],
 })
-export class AppRightComponent {
+export class AppRightComponent implements AfterViewInit {
     public readonly skillsLanguages: Skill[] = [
         {
             skill: 'HTML',
@@ -212,6 +213,16 @@ export class AppRightComponent {
     ];
 
     private readonly _modalService = inject(ModalService);
+    
+    ngAfterViewInit(): void {
+
+        // Inform visitors of current state.
+        setTimeout(() => {
+            const context = this._modalService.openModal(AlertModalComponent);
+            (context.modalComponent as AlertModalComponent).message
+                .set('I am currently employed full-time. Not available for freelance or full-time opportunities. <br/>Thank you for understanding.');
+        }, 500)
+    }
 
     public openPortfolioItem(item: Portfolio) {
         const context = this._modalService.openModal(PortfolioModalComponent);
