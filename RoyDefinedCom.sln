@@ -7,6 +7,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoyDefinedComApi", "src\Roy
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CvRoyDefinedComApi", "src\CvRoyDefinedCom\CvRoyDefinedComApi\CvRoyDefinedComApi.csproj", "{08C123C6-191D-D5DE-D76C-2F6B140ED81B}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Analyzer", "Analyzer", "{B8F6600B-1BB5-24C4-1C5C-B56170B4FF39}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
