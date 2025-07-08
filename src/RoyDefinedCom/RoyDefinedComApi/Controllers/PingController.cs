@@ -16,14 +16,14 @@ public class PingController : ControllerBase
         ILogger<PingController> logger,
         IHttpContextAccessor httpContextAccessor)
     {
-        this._logger = logger;
-        this._httpContextAccessor = httpContextAccessor;
+        _logger = logger;
+        _httpContextAccessor = httpContextAccessor;
     }
 
     [HttpGet]
     public IActionResult Ping()
     {
-		var httpContext = this._httpContextAccessor.HttpContext;
+		var httpContext = _httpContextAccessor.HttpContext;
 		httpContext?.Response.Headers.Append("Access-Control-Expose-Headers", "PingReceiveTime");
 		httpContext?.Response.Headers.Append("PingReceiveTime", new DateTimeOffset(DateTime.UtcNow).ToUnixTimeMilliseconds().ToString());
 		return base.NoContent();
