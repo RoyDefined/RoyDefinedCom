@@ -13,12 +13,13 @@ import { Education } from './types/Education';
 import { SkillOther } from './types/Skill-other';
 import { SkillOtherComponent } from './components/skill-other.component';
 import { AlertModalComponent } from './modals/alert.modal.component';
+import { FooterComponent } from './layout/footer/footer.component';
 
 @Component({
     standalone: true,
     selector: 'app-right',
     templateUrl: './app-right.component.html',
-    imports: [CommonModule, RouterModule, SkillbarComponent, SkillOtherComponent, ExperienceComponent, EducationComponent, NgOptimizedImage],
+    imports: [CommonModule, RouterModule, SkillbarComponent, SkillOtherComponent, ExperienceComponent, EducationComponent, NgOptimizedImage, FooterComponent],
     providers: [ModalService],
 })
 export class AppRightComponent implements AfterViewInit {
@@ -108,8 +109,7 @@ export class AppRightComponent implements AfterViewInit {
             school: 'ICT Campus, Hilversum',
             from: new Date(2014, 8),
             to: new Date(2017, 7),
-            description:
-                'Bilingual MBO application developer level 4 training.',
+            description: 'Bilingual MBO application developer level 4 training.',
         },
         {
             school: 'VMBO-TL Erfgooiers College, Huizen',
@@ -213,15 +213,15 @@ export class AppRightComponent implements AfterViewInit {
     ];
 
     private readonly _modalService = inject(ModalService);
-    
-    ngAfterViewInit(): void {
 
+    ngAfterViewInit(): void {
         // Inform visitors of current state.
         setTimeout(() => {
             const context = this._modalService.openModal(AlertModalComponent);
-            (context.modalComponent as AlertModalComponent).message
-                .set('I am currently employed full-time. Not available for freelance or full-time opportunities. <br/>Thank you for understanding.');
-        }, 500)
+            (context.modalComponent as AlertModalComponent).message.set(
+                'I am currently employed full-time. Not available for freelance or full-time opportunities. <br/>Thank you for understanding.',
+            );
+        }, 500);
     }
 
     public openPortfolioItem(item: Portfolio) {
