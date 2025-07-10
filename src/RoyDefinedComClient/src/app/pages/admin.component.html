@@ -1,0 +1,20 @@
+<div class="bg-container-primary text-default flex h-full min-h-screen w-full flex-col pt-5">
+    <section class="flex grow flex-col pb-10">
+        <h1 class="relative text-center text-4xl font-bold">Admin</h1>
+
+        <div class="my-5"></div>
+
+        <div class="bg-container-secondary flex flex-grow flex-col items-center py-10 shadow-2xl shadow-slate-300 dark:shadow-slate-950">
+            <!-- Post creator/previewer -->
+            <div class="flex w-full flex-grow justify-between space-x-4 p-4">
+                <!-- Left side: editor -->
+                <div class="flex flex-grow flex-col">
+                    <textarea class="bg-container-secondary" [(ngModel)]="content" rows="10" cols="60"></textarea>
+                </div>
+
+                <!-- Right side: previewer -->
+                <div class="flex-grow" [innerHTML]="content"></div>
+            </div>
+        </div>
+    </section>
+</div>
